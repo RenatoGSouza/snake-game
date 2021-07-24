@@ -1,5 +1,7 @@
 const canvas = document.getElementById('snake');
 const context = canvas.getContext('2d');
+const buttonRestart = document.getElementById('btn-restart');
+buttonRestart.disabled = true;
 
 let direction;
 let box = 32;
@@ -34,6 +36,7 @@ function drawFood() {
 }
 
 document.addEventListener('keydown', update);
+buttonRestart.addEventListener('click', () => location.reload() )
 
 function update ({keyCode}) {
   console.log(keyCode);
@@ -54,6 +57,7 @@ function iniciarJogo() {
     if(snake[0].x === snake[i].x && snake[0].y === snake[i].y) {
       clearInterval(jogo);
       alert('Game Over!');
+      buttonRestart.disabled = false;
     }
   }
 
